@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LzPlay Login</title>
+
+  <meta name="apple-mobile-web-app-title" content="LzPlay Download">
+  <meta name="application-name" content="LzPlay Download">
+<meta property="og:title" content="Descarga LzPlay Oficial" />
+<meta property="og:description" content="¡Disfruta películas y series gratis con LzPlay!" />
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigWbZGpcw_iGWfzAu1CzwaiPj3QA02hdetKDkMp7QJgMFdbPZ4iOUmgv4PnTa3smSsw_wSFUYRd1gcqLPhjTq5y1bAVpoFP6HZlkciWhZdBaiR0vRYa8sOYN_jQybpcWnYPoEk7sd0U_lqIb95Fly8M-usTougZC0XknTEyhLv5H5c3d_Y1PMYy0XEP89L/s720/WhatsApp%20Image%202025-07-21%20at%2012.47.53%20PM.jpeg" />
+<meta property="og:url" content="https://descargar.lzplay.lat/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Descarga LzPlay Oficial" />
+<meta name="twitter:description" content="¡Disfruta películas y series gratis con LzPlay!" />
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigWbZGpcw_iGWfzAu1CzwaiPj3QA02hdetKDkMp7QJgMFdbPZ4iOUmgv4PnTa3smSsw_wSFUYRd1gcqLPhjTq5y1bAVpoFP6HZlkciWhZdBaiR0vRYa8sOYN_jQybpcWnYPoEk7sd0U_lqIb95Fly8M-usTougZC0XknTEyhLv5H5c3d_Y1PMYy0XEP89L/s720/WhatsApp%20Image%202025-07-21%20at%2012.47.53%20PM.jpeg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2468/2468825.png" />
+
+  <!-- App iOS -->
+ <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDr_FvInyfKlPo4F_OIq1tT-8Q-oKRXzeLGKVLnezajl-SX5RFTqaxgKsZ6lsyKwOyBd3EcAVDC7WrDUjhL9RhLTFeCAv0q72_Q74escbxBiH92TEb0bLaroWQ5w-yR569coiIw07vQ_pDexOhlS8XjzrhGXVt51YeObvQHNXOxcyr3vj6rKGUTKRUF8Hp/s180/icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LzPlay">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .btn-lz {
+      background-color: #facc15;
+      color: #000;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-lz:hover {
+      background-color: #eab308;
+    }
+
+    /* Fondo animado */
+    .background-images {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .background-images img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.background-images img.visible {
+  opacity: 1;
+  z-index: 1;
+}
+
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .spinner {
+      border: 6px solid #333;
+      border-top: 6px solid #facc15;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #contenido-principal {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Fondo dinámico -->
+  <div class="background-images">
+    <img src="https://image.tmdb.org/t/p/original/fhLZfsaeMfEiZeaYm66vQbzZmNk.jpg" alt="fondo 1" class="visible" />
+    <img src="https://image.tmdb.org/t/p/original/74Zc3NIX0ekBENEVEGmegedzuu8.jpg" alt="fondo 2" />
+    <img src="https://image.tmdb.org/t/p/original/9G3Uv6WG8OuPSzBpZrgCVQ72EEX.jpg" alt="fondo 3" />
+    <img src="https://image.tmdb.org/t/p/original/fQz9xeuvJfSm0rtnxSTT06lPx0Q.jpg" alt="fondo 4" />
+  </div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top: 15px; color: #facc15;">Cargando LzPlay...</p>
+  </div>
+
+  <!-- Contenido principal -->
+  <div id="contenido-principal">
+
+    <!-- Encabezado -->
+    <div class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-yellow-400 drop-shadow-lg animate-bounce">
+        Bienvenido/a a tu aplicacion de LzPlay
+      </h1>
+      <p class="text-lg md:text-xl mb-8 max-w-xl text-white drop-shadow">
+        Disfruta de películas y series de calidad. ¡Totalmente gratis! y sin registros.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+     <a href="https://zinecia.github.io/Home/" class="btn-lz" id="btn-entrar">Entrar</a>
+
+<a href="https://descargar.lzplay.lat/" class="btn-lz" download>
+  Descargar APK ( android )
+</a>
+
+        <a href="https://lzrdrgz01.github.io/download-LzPlay/" id="btn-compartir" class="btn-lz">
+  Compartir
+</a>
+
+        <a href="https://linktr.ee/LzRdrg1" class="btn-lz">
+          Redes Sociales
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- Fin contenido principal -->
+
+ 
+  <script>
+  // Loader y mostrar contenido después de 2.5s
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const loader = document.getElementById("loader");
+      const contenido = document.getElementById("contenido-principal");
+
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+        contenido.style.display = "block";
+        document.body.style.overflow = "auto";
+        startBackgroundAnimation();
+      }, 500);
+    }, 2500);
+  });
+
+  const portraitImages = [
+    "https://image.tmdb.org/t/p/original/fhLZfsaeMfEiZeaYm66vQbzZmNk.jpg",
+    "https://image.tmdb.org/t/p/original/74Zc3NIX0ekBENEVEGmegedzuu8.jpg",
+    "https://image.tmdb.org/t/p/original/9G3Uv6WG8OuPSzBpZrgCVQ72EEX.jpg",
+    "https://image.tmdb.org/t/p/original/fQz9xeuvJfSm0rtnxSTT06lPx0Q.jpg"
+  ];
+
+  const landscapeImages = [
+    "https://image.tmdb.org/t/p/original/7HqLLVjdjhXS0Qoz1SgZofhkIpE.jpg",
+    "https://image.tmdb.org/t/p/original/veIyxxi5Gs8gvztLEW1Ysb8rrzs.jpg",
+    "https://image.tmdb.org/t/p/original/27ZkYMWynuK2qiDP6awc3MsCaOs.jpg",
+    "https://image.tmdb.org/t/p/original/j7KqDRzjbvIjDv7cdHz9G3ZYEQy.jpg"
+  ];
+
+  const backgroundImgs = document.querySelectorAll('.background-images img');
+  let currentImagesSet = portraitImages;
+  let currentIndex = 0;
+  let animationInterval;
+
+  function showImage(index) {
+    backgroundImgs.forEach((img, i) => {
+      img.classList.toggle('visible', i === index);
+      img.src = currentImagesSet[i];
+    });
+  }
+
+  function startBackgroundAnimation() {
+    currentIndex = 0;
+    showImage(currentIndex);
+    animationInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % backgroundImgs.length;
+      showImage(currentIndex);
+    }, 5000);
+  }
+
+  function changeImageSet(newSet) {
+    if (newSet === currentImagesSet) return;
+    currentImagesSet = newSet;
+    currentIndex = 0;
+    showImage(currentIndex);
+  }
+
+  function handleOrientationChange() {
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      changeImageSet(landscapeImages);
+    } else {
+      changeImageSet(portraitImages);
+    }
+  }
+
+  window.addEventListener("orientationchange", () => {
+    handleOrientationChange();
+  });
+
+  window.addEventListener("resize", () => {
+    handleOrientationChange();
+  });
+
+  window.addEventListener("load", () => {
+    handleOrientationChange();
+  });
+
+   document.getElementById('btn-compartir').addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const urlCompartir = 'https://descargar.lzplay.lat/';
+    const texto = '¡Mira esta app increíble para ver películas gratis! 📲🍿';
+    const titulo = 'LzPlay Download';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: titulo,
+          text: texto,
+          url: urlCompartir
+        });
+      } catch (err) {
+        fallbackCompartirPC(urlCompartir);
+      }
+    } else {
+      fallbackCompartirPC(urlCompartir);
+    }
+  });
+
+  function fallbackCompartirPC(url) {
+    const redes = [
+      `https://wa.me/?text=${encodeURIComponent(url)}`,
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent("¡Disfruta películas y series gratis con LzPlay! 🍿")}`,
+      `https://t.me/share/url?url=${encodeURIComponent(url)}&text=LzPlay`
+    ];
+
+    const fondo = document.createElement("div");
+    fondo.style.position = "fixed";
+    fondo.style.top = 0;
+    fondo.style.left = 0;
+    fondo.style.width = "100%";
+    fondo.style.height = "100%";
+    fondo.style.background = "rgba(0,0,0,0.7)";
+    fondo.style.zIndex = 99998;
+    fondo.addEventListener("click", () => {
+      fondo.remove();
+      document.getElementById("popup-redes").remove();
+    });
+    document.body.appendChild(fondo);
+
+    const popup = document.createElement("div");
+    popup.id = "popup-redes";
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.background = "#000";
+    popup.style.border = "2px solid #facc15";
+    popup.style.borderRadius = "16px";
+    popup.style.padding = "20px";
+    popup.style.zIndex = "99999";
+    popup.style.color = "#fff";
+    popup.style.textAlign = "center";
+    popup.style.boxShadow = "0 0 20px rgba(0,0,0,0.8)";
+    popup.style.maxWidth = "300px";
+    popup.innerHTML = `
+      <h3 style="font-size: 20px; margin-bottom: 15px;">Compartir LzPlay</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="${redes[0]}" target="_blank" class="btn-lz">WhatsApp</a>
+        <a href="${redes[1]}" target="_blank" class="btn-lz">Facebook</a>
+        <a href="${redes[2]}" target="_blank" class="btn-lz">Twitter</a>
+        <a href="${redes[3]}" target="_blank" class="btn-lz">Telegram</a>
+        <button onclick="document.getElementById('popup-redes').remove(); document.querySelector('body > div:last-child').remove();" class="btn-lz">Cerrar</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+  }
+
+  const CONTRASENA_CORRECTA = "LzMovies"; // Cambia la contraseña
+  const USER_AGENT_APP = "LZPLAYAPP";     // Identificador exclusivo para tu app oficial
+
+  function esAndroid() {
+    return /Android/i.test(navigator.userAgent);
+  }
+
+  function esIphone() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function esAppOficial() {
+    return navigator.userAgent.includes(USER_AGENT_APP);
+  }
+
+  document.getElementById("btn-entrar").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (esAndroid()) {
+      if (esAppOficial()) {
+        sessionStorage.setItem("lz_token", "acceso_valido");
+        window.location.href = "https://zinecia.github.io/Home/";
+      } else {
+        alert("Debes usar la aplicación oficial de LzPlay para acceder.");
+      }
+    } else if (esIphone()) {
+      sessionStorage.setItem("lz_token", "acceso_valido_iphone");
+      window.location.href = "https://zinecia.github.io/Home/";
+    } else {
+      const pass = prompt("Por favor ingresa la contraseña para continuar (solo administrador):");
+
+      if (pass === CONTRASENA_CORRECTA) {
+        sessionStorage.setItem("lz_token", "acceso_valido_admin");
+        window.location.href = "https://zinecia.github.io/Home/";
+      } else {
+        alert("Esta opción es solo para el administrador.");
+      }
+    }
+  });
+    
+    window.addEventListener("load", () => {
+  // Detectar Android en navegador (no app oficial)
+  if (esAndroid() && !esAppOficial()) {
+    const btnEntrar = document.getElementById("btn-entrar");
+    if (btnEntrar) {
+      btnEntrar.style.display = "none";
+    }
+  }
+});
+
+</script>
+
+</body>
+</html>
