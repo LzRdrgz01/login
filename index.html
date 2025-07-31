@@ -131,9 +131,10 @@
 
     <!-- Encabezado -->
     <div class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-yellow-400 drop-shadow-lg animate-bounce">
-        Bienvenido <span id="nombreUsuario"></span> a tu aplicacion de LzPlay
-      </h1>
+     <h1 id="tituloBienvenida" class="text-4xl md:text-6xl font-bold mb-6 text-yellow-400 drop-shadow-lg animate-bounce">
+  Bienvenido a tu aplicación de LzPlay
+</h1>
+
       <p class="text-lg md:text-xl mb-8 max-w-xl text-white drop-shadow">
         Disfruta de películas y series de calidad. ¡Totalmente gratis! y sin registros.
       </p>
@@ -359,12 +360,12 @@
   }
 });
 
-    document.addEventListener('DOMContentLoaded', () => {
+     document.addEventListener('DOMContentLoaded', () => {
     const nombre = localStorage.getItem('nombrePerfil');
-    const contenedor = document.getElementById('nombreUsuario');
+    const titulo = document.getElementById('tituloBienvenida');
 
-    if (nombre && contenedor) {
-      contenedor.textContent = nombre;
+    if (nombre && titulo) {
+      titulo.textContent = `Bienvenido, ${nombre} 👋 a tu aplicación de LzPlay`;
     }
   });
 </script>
